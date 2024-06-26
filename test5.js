@@ -208,7 +208,6 @@ randomvalueArray.forEach((letter) => {
   }
   view.appendChild(span);
 });
-console.log(randomvalue);
 
 // a button clicked
 
