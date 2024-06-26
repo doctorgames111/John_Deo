@@ -256,7 +256,7 @@ document.body.addEventListener("click", (e) => {
       }
       view.appendChild(span);
     });
-    console.log(randomvalue);
+    
     winnerh1.nextElementSibling.remove();
   }
 
