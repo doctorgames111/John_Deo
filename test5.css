@@ -1,0 +1,471 @@
+/* the game design */
+.game {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* the title design */
+
+.title {
+    width: 100%;
+    height: 20%;
+    background-color: #1F2833;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    position: relative;
+    border-bottom: 5px solid #45A29E;
+}
+
+.title span {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.name {
+    width: 50%;
+    justify-content: center;
+    color: #66FCF1;
+    font-size: 64px;
+}
+
+.type {
+    width: 45%;
+    height: 100%;
+    padding-right: 5%;
+    justify-content: right;
+    color: #C5C6C7;
+    font-size: 40px;
+}
+
+.typename {
+    color: #66FCF1;
+    text-transform: capitalize;
+}
+
+/* the middle design */
+
+.middle {
+    background-color: #45A29E;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* the draw box design */
+
+.draw {
+    background-color: #0B0C10;
+    width: 49.5%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* the main draw design */
+
+.thedraw {
+    width: min-content;
+    height: 80%;
+    display: flex;
+    position: relative;
+}
+
+.stand {
+    background-color: #66FCF1;
+    width: 100px;
+    height: 7px;
+    align-self: flex-end;
+    opacity: 0;
+    transition-duration: 250ms;
+}
+
+.bar {
+    background-color: #66FCF1;
+    width: 7px;
+    height: 100%;
+    left: 33%;
+    position: absolute;
+    opacity: 0;
+    transition-duration: 250ms;
+}
+
+.hang::before {
+    content: "";
+    background-color: #66FCF1;
+    height: 7px;
+    width: 100px;
+    position: absolute;
+    left: 33%;
+    opacity: 0;
+    transition-duration: 250ms;
+}
+
+.hang::after {
+    content: "";
+    background-color: #66FCF1;
+    height: 40px;
+    width: 7px;
+    position: absolute;
+    top: 0%;
+    right: -33%;
+    opacity: 0;
+    transition-duration: 250ms;
+}
+
+.rope{
+    border: 7px dashed #66FCF1;
+    height: 70px;
+    width: 50px;
+    transform: rotate(-17deg);
+    border-radius: 50%;
+    position: absolute;
+    top: 35px;
+    right: -66%;
+    opacity: 0;
+    transition-duration: 250ms;
+}
+
+.head {
+    background-color: #66FCF1;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    position: absolute;
+    top: 22%;
+    right: -64%;
+    opacity: 0;
+    transition-duration: 250ms;
+}
+
+.body {
+    background-color: #66FCF1;
+    height: 80px;
+    width: 7px;
+    position: absolute;
+    top: 38%;
+    right: -38%;
+    opacity: 0;
+    transition-duration: 250ms;
+}
+
+.hands::before {
+    content: "";
+    background-color: #66FCF1;
+    height: 7px;
+    width: 71px;
+    position: absolute;
+    right: -56%;
+    top: 51%;
+    transform: rotate(-68deg);
+    opacity: 0;
+    transition-duration: 250ms;
+}
+
+.hands::after {
+    content: "";
+    background-color: #66FCF1;
+    height: 7px;
+    width: 71px;
+    position: absolute;
+    right: -84%;
+    top: 51%;
+    transform: rotate(68deg);
+    opacity: 0;
+    transition-duration: 250ms;
+}
+
+.legs::before {
+    content: "";
+    background-color: #66FCF1;
+    height: 7px;
+    width: 71px;
+    position: absolute;
+    right: -56%;
+    top: 75%;
+    transform: rotate(-68deg);
+    opacity: 0;
+    transition-duration: 250ms;
+}
+
+.legs::after {
+    content: "";
+    background-color: #66FCF1;
+    height: 7px;
+    width: 71px;
+    position: absolute;
+    right: -83%;
+    top: 75%;
+    transform: rotate(68deg);
+    opacity: 0;
+    transition-duration: 250ms;
+}
+
+/* the letters box design */
+
+.letters {
+    background-color: #0B0C10;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.letterbox {
+    display: flex;
+    width: 50px;
+    height: 50px;
+    background-color: #45A29E;
+    color: #1F2833;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 24px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition-duration: 250ms;
+}
+
+.wrong {
+    background-color: #C5C6C7;
+    cursor: default;
+}
+
+.correct {
+    background-color: #1F2833;color: #66FCF1;
+}
+
+/* the view design */
+
+.view {
+    background-color: #0B0C10;
+    width: 100%;
+    height: 30%;
+    border-top: 5px solid #45A29E;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.wordbox {
+    width: 50px;
+    height: 50px;
+    background-color: #1F2833;
+    border-radius: 5px;
+    border-bottom: 5px solid #45A29E;
+    color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 30px;
+    transition-duration: 250ms;
+}
+
+.done {
+    color: #66FCF1;
+    transition-duration: 250ms;
+}
+
+.space {
+    opacity: 0;
+}
+
+/* wrong attempts */
+
+.thedraw.L1 .stand {
+    opacity: 1;
+    transition-duration: 250ms;
+}
+
+.thedraw.L2 .bar {
+    opacity: 1;
+    transition-duration: 250ms;
+}
+
+.thedraw.L3 .hang::before {
+    opacity: 1;
+    transition-duration: 250ms;
+}
+
+.thedraw.L4 .hang::after {
+    opacity: 1;
+    transition-duration: 250ms;
+}
+
+.thedraw.L5 .rope {
+    opacity: 1;
+    transition-duration: 250ms;
+}
+
+.thedraw.L6 .head {
+    opacity: 1;
+    transition-duration: 250ms;
+}
+
+.thedraw.L7 .body {
+    opacity: 1;
+    transition-duration: 250ms;
+}
+
+.thedraw.L8 .hands::before , .thedraw.L8 .hands::after {
+    opacity: 1;
+    transition-duration: 250ms;
+}
+
+.thedraw.L9 .legs::before , .thedraw.L9 .legs::after {
+    opacity: 1;
+    transition-duration: 250ms;
+}
+
+body.failed .letterbox{
+    background-color: #C5C6C7;
+    color: #1F2833;
+    cursor: default;
+    pointer-events: none;
+}
+
+/* Game Over */
+
+.dark {
+    width: 100vw;
+    height: 100vh;
+    background-color: #0B0C10;
+    z-index: -1;
+    position: fixed;
+    opacity: 0;
+    transition-duration: 250ms;
+}
+
+.gameovercont {
+    z-index: 1000;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 600px;
+    height: 400px;
+    background-color: #1F2833;
+    border-radius: 100px;
+    z-index: -1;
+}
+
+.gameover {
+    color: #66FCF1;
+    font-size: 75px;
+    padding: 0;
+    margin: 0;
+}
+
+.thedeath, .word {
+    color: #45A29E;
+    font-size: 32px;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.thewordspan {
+    color: #66FCF1;
+    text-transform: capitalize;
+}
+
+.score {
+    color: #45A29E;
+    font-size: 32px;
+    padding: 0;
+    margin: 0;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.scorenum {
+    color: #66FCF1;
+}
+
+.restart, .continue {
+    color: #45A29E;
+    background-color: #0B0C10;
+    font-size: 32px;
+    width: 160px;
+    height: 80px;
+    border-radius: 50px;
+    margin: 0;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition-duration: 250ms;
+}
+
+.restart:hover, .continue:hover {
+    color: #66FCF1;
+    transition-duration: 250ms;
+}
+
+.dark.gameover {
+    opacity: 0.7;
+    z-index: 999;
+    transition-duration: 250ms;
+}
+
+.gameovercont.gameover {
+    z-index: 1000;
+    transition-duration: 250ms;
+}
+
+.winnercont.gameover {
+    z-index: 1000;
+    transition-duration: 250ms;
+}
+
+/* phones */
+
+.phone {
+    width: 100vw;
+    height: 100vh;
+    background-color: #1F2833;
+    position: fixed;
+    opacity: 0;
+    color: #66FCF1;
+    font-size: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    z-index: -100;
+}
+
+@media only screen and (max-width: 768px) {
+    .phone {
+        z-index: 9999999;
+        opacity: 1;
+    }
+}
