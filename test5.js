@@ -61,7 +61,7 @@ categories = {
   languages: [
     "english",
     "spanish",
-    "mandarin chinese",
+    "chinese",
     "hindi",
     "french",
     "arabic",
@@ -102,6 +102,7 @@ categories = {
     "turkey",
     "saudi arabia",
     "switzerland",
+    "egypt",
   ],
 
   clothes: [
@@ -255,7 +256,7 @@ document.body.addEventListener("click", (e) => {
       }
       view.appendChild(span);
     });
-    
+    winnerh1.nextElementSibling.remove();
     winnerh1.nextElementSibling.remove();
   }
 
@@ -295,14 +296,26 @@ document.body.addEventListener("click", (e) => {
       }, 1000);
       let thescore = document.createElement("div");
       let thescoreT = document.createTextNode(`Your score: `);
-      thescorenumspan = document.createElement("span");
-      thescorenumspanT = document.createTextNode(score);
+      let thescorenumspan = document.createElement("span");
+      let thescorenumspanT = document.createTextNode(score);
       thescorenumspan.appendChild(thescorenumspanT);
       thescorenumspan.className = "scorenum";
       thescore.appendChild(thescoreT);
       thescore.appendChild(thescorenumspan);
       thescore.className = "score";
       thedeath.after(thescore);
+
+      let highscore = window.localStorage.getItem("highscore") || 0;
+      let thehighscore = document.createElement("div");
+      let thehighscoreT = document.createTextNode(`Your high score: `);
+      let thehighscorenumspan = document.createElement("span");
+      let thehighscorenumspanT = document.createTextNode(highscore);
+      thehighscorenumspan.appendChild(thehighscorenumspanT);
+      thehighscorenumspan.className = "scorenum";
+      thehighscore.appendChild(thehighscoreT);
+      thehighscore.appendChild(thehighscorenumspan);
+      thehighscore.className = "highscore";
+      thescore.after(thehighscore);
 
       let theword = document.createElement("div");
       let thewordspan = document.createElement("span");
@@ -325,6 +338,12 @@ document.body.addEventListener("click", (e) => {
         winnerCont.classList.add("gameover");
       }, 1000);
 
+      let highscore = window.localStorage.getItem("highscore") || 0;
+      if (score > highscore) {
+        window.localStorage.setItem("highscore", score);
+        highscore = window.localStorage.getItem("highscore") || 0;
+    }
+
       let thenewscore = document.createElement("div");
       let thenewscoreT = document.createTextNode(`Your new score: `);
       thescorenumspan = document.createElement("span");
@@ -335,6 +354,17 @@ document.body.addEventListener("click", (e) => {
       thenewscore.appendChild(thescorenumspan);
       thenewscore.className = "score";
       winnerh1.after(thenewscore);
+
+      let thenewhighscore = document.createElement("div");
+      let thenewhighscoreT = document.createTextNode(`Your high score: `);
+      thenewhighscorenumspan = document.createElement("span");
+      thenewhighscorenumspanT = document.createTextNode(highscore);
+      thenewhighscorenumspan.appendChild(thenewhighscorenumspanT);
+      thenewhighscorenumspan.className = "scorenum";
+      thenewhighscore.appendChild(thenewhighscoreT);
+      thenewhighscore.appendChild(thenewhighscorenumspan);
+      thenewhighscore.className = "highscore";
+      thenewscore.after(thenewhighscore);
     }
   }
   if (e.target.className === "restart") {
