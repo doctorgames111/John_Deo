@@ -396,12 +396,16 @@ body.failed .letterbox{
     text-transform: capitalize;
 }
 
-.score {
+.score, .highscore {
     color: #45A29E;
     font-size: 32px;
     padding: 0;
     margin: 0;
     font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.highscore {
     margin-bottom: 30px;
 }
 
